@@ -1,0 +1,20 @@
+{
+  "name": "threejs-rolling-dice-tutorial",
+  "version": "1.0.0",
+  "description": "Demo for the tutorial on how to code a dice cube and realistic dice roller",
+  "main": "index.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2",
+    "playwright": "^1.44.0",
+    "puppeteer": "^22.9.0",
+    "socket.io": "^4.7.5"
+  }
+}
