@@ -284,10 +284,10 @@ function addDiceEvents(dice) {
 function showRollResults(score) {
     if (scoreResult.innerHTML === '') {
         scoreResult.innerHTML += score;
-        socket.emit('scoreResult', score);
+        //socket.emit('scoreResult', score);
     } else {
         scoreResult.innerHTML += ('+' + score);
-        socket.emit('scoreResult', score);
+       // socket.emit('scoreResult', score);
     }
 }
 
@@ -325,7 +325,7 @@ function throwDice() {
         dicedata.rotation1 = rotation1;
         const rotation2  =Math.random();
         dicedata.rotation2 =  rotation2;
-        d.mesh.rotation.set(2 * Math.PI * rotation1, 0, 2 * Math.PI * rotation2)
+        d.mesh.rotation.set(5, 0, 7)
         console.log(' d.body.quaternion dice: ',dIdx ,  d.body.quaternion)
         d.body.quaternion.copy(d.mesh.quaternion);
         console.log('d.mesh.quaternion dice: ' ,dIdx,  d.mesh.quaternion)
@@ -362,7 +362,6 @@ function throwDice() {
         d.body.velocity.setZero();
         d.body.angularVelocity.setZero();
         d.body.position = new CANNON.Vec3(6, dIdx * 1.5, 0);
-       // dicedata.position =  d.body.position;
         d.mesh.position.copy(d.body.position);
         console.log('d.body.position : ', d.body.position)
         console.log('d.mesh.position : ', d.mesh.position )
@@ -370,7 +369,7 @@ function throwDice() {
         // //dicedata.rotation1 = rotation1;
         // const rotation2  =Math.random();
         // //dicedata.rotation2 =  rotation2;
-        d.mesh.rotation.set(2 * Math.PI * data[dIdx].rotation1, 0, 2 * data[dIdx].rotation2)
+        d.mesh.rotation.set(5, 0, 7)
         d.body.quaternion.copy(d.mesh.quaternion);
       //  dicedata.quaternion = d.mesh.quaternion;
         const forceNumber = data[dIdx].forceNumber;
@@ -387,9 +386,17 @@ function throwDice() {
 });
 
 socket.on('scoreResult', (data) => {
+    console.log('scoreResult : ' , data);
+    console.log('scoreResult.innerHTML : ' , scoreResult.innerHTML + 'length:', scoreResult.innerHTML.length);
+   // if(scoreResult.innerHTML.length > 3)
     if (scoreResult.innerHTML === '') {
         scoreResult.innerHTML += data;
     } else {
         scoreResult.innerHTML += ('+' + data);
     }
+});
+
+
+socket.on('throwdice', (data) => {
+    throwDice();
 });

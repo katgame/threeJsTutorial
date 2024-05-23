@@ -17,6 +17,14 @@ app.get('/', (req, res) => {
     
     res.sendFile(__dirname + '/index.html');
   });
+
+  app.get('/throwdice', (req, res) => {
+    io.emit('throwdice');
+    res.statusCode = 200;
+    res.end('working !!!');
+  
+  });
+
 io.on('connection', (socket) => {
   console.log('A user connected');
   
