@@ -1,4 +1,6 @@
 const socket = io.connect();
+const userId = 'user123'; // Replace with actual user ID logic
+socket.emit('register', userId);
 
 import * as BufferGeometryUtils from 'three/addons/utils/BufferGeometryUtils.js';
 import * as CANNON from 'https://cdn.skypack.dev/cannon-es';
